@@ -1,0 +1,44 @@
+1.USE `activity1`;
+DROP procedure IF EXISTS `new_procedure`;
+
+DELIMITER $$
+USE `activity1`$$
+CREATE PROCEDURE `new_procedure` ()
+BEGIN
+select * from production;
+END$$
+
+DELIMITER ;
+
+call activity1.new_procedure();
+ 
+
+
+2.
+USE `activity1`;
+DROP procedure IF EXISTS `movie`;
+
+DELIMITER $$
+USE `activity1`$$
+CREATE PROCEDURE `movie` ()
+BEGIN
+select * from movie;
+select moviename from movie where movietype='drama';
+END$$
+
+DELIMITER ;
+call activity1.movie();
+
+3
+USE `activity1`;
+DROP procedure IF EXISTS `new_procedure1`;
+
+DELIMITER $$
+USE `activity1`$$
+CREATE PROCEDURE `new_procedure1` ()
+BEGIN
+select count(moviename) from movie where length>18;
+END$$
+
+DELIMITER ;
+call activity1.movie();
